@@ -6,6 +6,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   //Global midleware
   // app.use(AuthenticationMidlleware);
-  await app.listen(3000);
+  //Global Guard
+  // app.useGlobalGuards(new AuthGuard());
 }
 bootstrap();

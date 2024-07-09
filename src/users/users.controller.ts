@@ -17,7 +17,10 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { CreateProfileDto } from 'src/profiles/dto/create-profile.dto';
 import { CreatePostDto } from 'src/posts/dto/create-post.dto';
+import { AuthGuard } from 'src/guards/auth.guard';
+
 @Controller('users')
+@UseGuards(AuthGuard) //controller guard
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
@@ -26,7 +29,7 @@ export class UsersController {
     await this.usersService.createUser(createUserDto);
     return 'create sucesds';
   }
-
+  // @UseGuards(AuthGuard) //route handler guard
   @Get()
   findAll() {
     return this.usersService.findAll();
