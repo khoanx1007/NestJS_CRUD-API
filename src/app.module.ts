@@ -7,8 +7,9 @@ import { ProfilesModule } from './profiles/profiles.module';
 import { PostsModule } from './posts/posts.module';
 import { RequestService } from './request.service';
 import { AuthenticationMidlleware } from './middleware/authentication.middleware';
-import { APP_INTERCEPTOR } from '@nestjs/core';
+import { APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core';
 import { LoggingInterceptor } from './interceptors/logging.interceptor';
+import { FreezePipe } from './pipes/freeze.pipe';
 
 @Module({
   imports: [
@@ -28,7 +29,11 @@ import { LoggingInterceptor } from './interceptors/logging.interceptor';
     PostsModule,
   ],
   controllers: [AppController],
-  providers: [AppService, RequestService
+  providers: [AppService, RequestService,
+    {
+      provide: APP_PIPE,
+      useClass: FreezePipe
+    }
   ]
 })
 export class AppModule implements NestModule{
