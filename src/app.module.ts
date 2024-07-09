@@ -26,7 +26,10 @@ import { AuthenticationMidlleware } from './middleware/authentication.middleware
     PostsModule,
   ],
   controllers: [AppController],
-  providers: [AppService, RequestService],
+  providers: [AppService, RequestService,
+    // {provide: APP_GUARD,
+    // useClass: AuthGuard},
+  ]
 })
 export class AppModule implements NestModule{
   configure(consumer: MiddlewareConsumer) {
