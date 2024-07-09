@@ -7,6 +7,8 @@ import { ProfilesModule } from './profiles/profiles.module';
 import { PostsModule } from './posts/posts.module';
 import { RequestService } from './request.service';
 import { AuthenticationMidlleware } from './middleware/authentication.middleware';
+import { APP_INTERCEPTOR } from '@nestjs/core';
+import { LoggingInterceptor } from './interceptors/logging.interceptor';
 
 @Module({
   imports: [
@@ -26,9 +28,7 @@ import { AuthenticationMidlleware } from './middleware/authentication.middleware
     PostsModule,
   ],
   controllers: [AppController],
-  providers: [AppService, RequestService,
-    // {provide: APP_GUARD,
-    // useClass: AuthGuard},
+  providers: [AppService, RequestService
   ]
 })
 export class AppModule implements NestModule{
