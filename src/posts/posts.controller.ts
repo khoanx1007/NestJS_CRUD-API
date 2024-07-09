@@ -1,6 +1,5 @@
 import { Controller, Get, NotFoundException, Param, ParseIntPipe, UseFilters } from '@nestjs/common';
 import { PostsService } from './posts.service';
-import { HttpExceptionFilter } from 'src/filter/http-exception.filter';
 
 @Controller('posts')
 export class PostsController {
@@ -10,10 +9,10 @@ export class PostsController {
     return this.postsService.findAll();
   }
 
-  @Get('raise-error')
-  raise(){
-    throw new NotFoundException();
-  }
+  // @Get('raise-error')
+  // raise(){
+  //   throw new NotFoundException();
+  // }
 
   @Get(':id')
   findOne(@Param('id', ParseIntPipe) id: number){

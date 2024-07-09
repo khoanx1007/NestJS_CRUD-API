@@ -17,7 +17,6 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { CreateProfileDto } from 'src/profiles/dto/create-profile.dto';
 import { CreatePostDto } from 'src/posts/dto/create-post.dto';
-
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
