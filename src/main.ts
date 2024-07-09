@@ -8,6 +8,9 @@ async function bootstrap() {
   // app.use(AuthenticationMidlleware);
   //Global Guard
   // app.useGlobalGuards(new AuthGuard());
+  //Global Filter
+  // app.useGlobalFilters(new HttpExceptionFilter()) //Global binding
+
   await app.listen(3000);
 }
 bootstrap();
