@@ -8,5 +8,6 @@ async function bootstrap() {
   // app.use(AuthenticationMidlleware);
   //Global Guard
   // app.useGlobalGuards(new AuthGuard());
+  await app.listen(3000);
 }
 bootstrap();

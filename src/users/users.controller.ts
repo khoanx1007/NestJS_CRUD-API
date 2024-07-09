@@ -18,9 +18,12 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { CreateProfileDto } from 'src/profiles/dto/create-profile.dto';
 import { CreatePostDto } from 'src/posts/dto/create-post.dto';
 import { AuthGuard } from 'src/guards/auth.guard';
+import { LoggingInterceptor } from 'src/interceptors/logging.interceptor';
+
 
 @Controller('users')
 @UseGuards(AuthGuard) //controller guard
+@UseInterceptors(LoggingInterceptor)
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
@@ -31,6 +34,7 @@ export class UsersController {
   }
   // @UseGuards(AuthGuard) //route handler guard
   @Get()
+  @UseInterceptors(LoggingInterceptor)
   findAll() {
     return this.usersService.findAll();
   }
